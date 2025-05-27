@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.deep.springboot.entity.Trainer;
+import com.deep.springboot.entity.TrainerAssignment;
 import com.deep.springboot.repository.TrainerRepo;
 
 import java.util.List;
@@ -40,5 +41,18 @@ public class TrainerService {
 	        trainerRepo.save(existTrainer); 
 	    }
 	}
+
+	public Trainer authentication(String email, String password) {
+	    Optional<Trainer> byEmailAndPassword = trainerRepo.findByEmailAndPassword(email, password);
+	    return byEmailAndPassword.orElse(null);
+	}
+
+
+
+
+	
+
+	
+
 
 }

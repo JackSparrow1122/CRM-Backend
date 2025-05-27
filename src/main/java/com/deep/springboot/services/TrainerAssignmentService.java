@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.deep.springboot.entity.Trainer;
 import com.deep.springboot.entity.TrainerAssignment;
 import com.deep.springboot.repository.TrainerAssignmentRepository;
 
@@ -29,4 +30,14 @@ public class TrainerAssignmentService {
             throw new RuntimeException("Assignment not found with id: " + id);
         }
     }
+
+    public List<TrainerAssignment> authTrainer(String email) {
+        List<TrainerAssignment> byTrainer_Email = trainerAssignmentRepository.findByTrainer_Email(email);
+        if(byTrainer_Email != null)
+        	return byTrainer_Email;
+        else
+        	return null;
+    }
+
+
 }
